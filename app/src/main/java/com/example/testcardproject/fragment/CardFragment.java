@@ -2,8 +2,6 @@ package com.example.testcardproject.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-//import android.support.annotation.Nullable;
-//import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +17,16 @@ import com.example.testcardproject.R;
 import com.example.testcardproject.api.QuestionSaveApi;
 import com.example.testcardproject.bean.QuestionInfo;
 import com.example.testcardproject.view.ButtonSelectView;
+import com.http.api.ApiListener;
+import com.http.api.ApiUtil;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+//import android.support.annotation.Nullable;
+//import android.support.v4.app.Fragment;
 //import com.imooc.nick.cardtestproject.MainActivity;
 //import com.imooc.nick.cardtestproject.R;
 //import com.imooc.nick.cardtestproject.api.QuestionSaveApi;
@@ -89,14 +92,14 @@ public class CardFragment extends Fragment {
         mButtonSelectView1.setListenter(new ButtonSelectView.onButtonSelectClickListener() {
             @Override
             public void onClick() {
-//                saveOptionInfo(1);
+                saveOptionInfo(1);
             }
         });
 
         mButtonSelectView2.setListenter(new ButtonSelectView.onButtonSelectClickListener() {
             @Override
             public void onClick() {
-//                saveOptionInfo(2);
+                saveOptionInfo(2);
             }
         });
 
@@ -122,7 +125,7 @@ public class CardFragment extends Fragment {
 
     private void saveOptionInfo(final int option) {
 //        new QuestionSaveApi(mCurrentInfo.question_id,
-//                String.valueOf(option)).post(new ApiListener() {
+//                String.valueOf(option)).post(new ApiListener() {//shibaile  zheli
 //            @Override
 //            public void success(ApiUtil api) {
 //                QuestionSaveApi apiBase = (QuestionSaveApi)api;
@@ -140,6 +143,14 @@ public class CardFragment extends Fragment {
 //
 //            }
 //        });
+
+        QuestionSaveApi apiBase2 = new QuestionSaveApi( "384", "2");
+        boolean isCorrect2 = true;
+        handleButtonSelectView(option, isCorrect2);
+
+        tip_layout.setVisibility(View.VISIBLE);
+        TipContentTv.setText(mCurrentInfo.explain);
+        mainActivity.setBottomTipView(apiBase2.mRankInfo.correct_count);
 
         //todo
         String str = getFromAssets("submit.json", getContext());
@@ -179,6 +190,37 @@ public class CardFragment extends Fragment {
         return null;
     }
 
+    private void handleButtonSelectView(int option, boolean isCorrect) {
+        int rightOption;
+        if (option == 1) {
+            if (isCorrect) {
+                rightOption = 1;
+                 //mainActivity.startRain();
+            } else {
+                rightOption = 2;
+            }
+            mButtonSelectView1.setSelect(true);
+            mButtonSelectView2.setSelect(false);
+        } else {
+            if (isCorrect) {
+                rightOption = 2;
+                // mainActivity.startRain();
+            } else {
+                rightOption = 1;
+            }
+            mButtonSelectView1.setSelect(false);
+            mButtonSelectView2.setSelect(true);
+        }
+
+        if (rightOption == 1) {
+            mButtonSelectView1.setIcon(R.mipmap.img_test_right);
+            mButtonSelectView2.setIcon(R.mipmap.img_test_worn);
+        } else {
+            mButtonSelectView1.setIcon(R.mipmap.img_test_worn);
+            mButtonSelectView2.setIcon(R.mipmap.img_test_right);
+        }
+
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

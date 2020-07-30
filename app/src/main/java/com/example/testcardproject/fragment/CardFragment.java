@@ -128,7 +128,7 @@ public class CardFragment extends Fragment {
 //                String.valueOf(option)).post(new ApiListener() {//shibaile  zheli
 //            @Override
 //            public void success(ApiUtil api) {
-//                QuestionSaveApi apiBase = (QuestionSaveApi)api;
+//                QuestiosaveOptionInfoSaveApi apiBase = (QuestionSaveApi)api;
 //                boolean isCorrect = ((QuestionSaveApi) api).mRankInfo.is_correct.equals("1");
 //                handleButtonSelectView(option,isCorrect);
 //
@@ -195,7 +195,7 @@ public class CardFragment extends Fragment {
         if (option == 1) {
             if (isCorrect) {
                 rightOption = 1;
-                 //mainActivity.startRain();
+                 mainActivity.startRain();
             } else {
                 rightOption = 2;
             }

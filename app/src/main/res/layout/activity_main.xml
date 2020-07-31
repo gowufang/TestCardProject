@@ -51,7 +51,12 @@
         android:clipChildren="false">
     </androidx.viewpager.widget.ViewPager>
 
-    <com.example.testcardproject.view.SingleEmotionRainView
+    <!--<com.example.testcardproject.view.SingleEmotionRainView-->
+        <!--android:id="@+id/emotion_rain_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <com.example.testcardproject.view.EmotionRainView
         android:id="@+id/emotion_rain_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

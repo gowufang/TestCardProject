@@ -92,7 +92,7 @@ public class CardFragment extends Fragment {
         mButtonSelectView1.setListenter(new ButtonSelectView.onButtonSelectClickListener() {
             @Override
             public void onClick() {
-                saveOptionInfo(1);
+                saveOptionInfo(1);//1 表示用户选择了第一个
             }
         });
 
@@ -195,7 +195,7 @@ public class CardFragment extends Fragment {
         if (option == 1) {
             if (isCorrect) {
                 rightOption = 1;
-                 mainActivity.startRain();
+                 mainActivity.startRain();//如果option选了1，正确的选项rightOption也是1，则表情出现
             } else {
                 rightOption = 2;
             }
@@ -204,7 +204,7 @@ public class CardFragment extends Fragment {
         } else {
             if (isCorrect) {
                 rightOption = 2;
-                // mainActivity.startRain();
+                 mainActivity.startRain();
             } else {
                 rightOption = 1;
             }

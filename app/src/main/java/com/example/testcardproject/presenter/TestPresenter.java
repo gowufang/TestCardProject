@@ -77,13 +77,13 @@ public class TestPresenter {
     private void getHistory(){
 
 
-        new HistoryQuestionGetApi().get(mContext, new ApiListener() {
+        new HistoryQuestionGetApi().get(mContext, new ApiListener() {//get history questions
             @Override
             public void success(ApiUtil api) {
 
                 HistoryQuestionGetApi  apiBase= (HistoryQuestionGetApi) api;
                 mHistoryList=apiBase.list;
-                getCurrentQuestionApi();
+                getCurrentQuestionApi();//get a new question
             }
 
             @Override
@@ -101,7 +101,7 @@ public class TestPresenter {
                 mCurrentInfo=apiBase.mInfo;
                 mHistoryList.add(0,mCurrentInfo);
                 Log.d("sdfaf",mCurrentInfo.title);
-                refreshData();
+                refreshData(); //update UI
             }
 
             @Override

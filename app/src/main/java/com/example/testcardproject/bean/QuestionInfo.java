@@ -30,11 +30,11 @@ public class QuestionInfo implements Serializable {
     public String answer;
 
     @Convert(converter = StringConverter.class , columnType = String.class)
-    public List<String> options = new ArrayList<String>();
+    public List<String> options = new ArrayList<String>();//每个选项的内容
 
     public int type;
 
-    public String option;
+    public String option;//yonghu 选择的选项
 
     public String explain;
 

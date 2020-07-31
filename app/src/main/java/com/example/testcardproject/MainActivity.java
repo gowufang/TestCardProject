@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.testcardproject.adapter.CardFragmentPagerAdapter;
 import com.example.testcardproject.bean.QuestionInfo;
 import com.example.testcardproject.presenter.TestPresenter;
+import com.example.testcardproject.view.EmotionRainView;
 import com.example.testcardproject.view.ITestView;
 import com.example.testcardproject.view.SingleEmotionRainView;
 
@@ -28,7 +29,8 @@ public class MainActivity extends FragmentActivity implements ITestView {
     private ViewPager viewpager;
     private TextView tvBottomText;
     private CardFragmentPagerAdapter mAapter;
-    private SingleEmotionRainView emotion_rain_view;
+    private SingleEmotionRainView emotion_rain_view2;
+    private EmotionRainView emotion_rain_view;
     private LinearLayout invite_layout;
 //    private InviteHelper mInviteHelper;
 
@@ -62,12 +64,18 @@ public class MainActivity extends FragmentActivity implements ITestView {
         emotion_rain_view.start(getBitmaps());
     }
 
-    public Bitmap getBitmaps() {
+    public Bitmap getBitmap() {
         Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.mipmap.pic1);
 
         return bitmap;
     }
-
+    public List<Bitmap> getBitmaps() {
+        List<Bitmap> bitmaps = new ArrayList<>();
+        bitmaps.add(BitmapFactory.decodeResource(getResources(),R.mipmap.pic1));
+        bitmaps.add(BitmapFactory.decodeResource(getResources(),R.mipmap.pic2));
+        bitmaps.add(BitmapFactory.decodeResource(getResources(),R.mipmap.pic3));
+        return bitmaps;
+    }
 
     @Override
     public void updateUI(List<QuestionInfo> list) {

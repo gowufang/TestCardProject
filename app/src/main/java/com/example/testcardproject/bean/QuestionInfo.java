@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.greenrobot.greendao.annotation.Generated;
 
-@Keep
 @Entity(nameInDb = "QuestionBean")
+@Keep
 public class QuestionInfo implements Serializable {
 
     public static final long serialVersionUID = 3243243243243L;
@@ -29,7 +29,7 @@ public class QuestionInfo implements Serializable {
 
     public String answer;
 
-    @Convert(converter = StringConverter.class , columnType = String.class)
+    @Convert(converter = StringConverter.class, columnType = String.class)
     public List<String> options = new ArrayList<String>();//每个选项的内容
 
     public int type;

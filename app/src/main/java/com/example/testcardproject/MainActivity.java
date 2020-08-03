@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.testcardproject.adapter.CardFragmentPagerAdapter;
 import com.example.testcardproject.bean.QuestionInfo;
 import com.example.testcardproject.presenter.TestPresenter;
+import com.example.testcardproject.transform.CardTransformer;
 import com.example.testcardproject.view.EmotionRainView;
 import com.example.testcardproject.view.ITestView;
 import com.example.testcardproject.view.SingleEmotionRainView;
@@ -85,8 +86,9 @@ public class MainActivity extends FragmentActivity implements ITestView {
         viewpager.setAdapter(mAapter);
         viewpager.setOffscreenPageLimit(3);
         viewpager.setCurrentItem(list.size()-1);
+//        viewpager.setPageMargin(40);
 
-//        viewpager.setPageTransformer(true,new CardTransformer());
+        viewpager.setPageTransformer(true,new CardTransformer());
     }
 
     @Override
